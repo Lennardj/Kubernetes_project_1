@@ -1,5 +1,5 @@
 FROM centos:latest
-
+# LABEL key="value"
 RUN yum install -y httpd \
     zip \
     unzip
