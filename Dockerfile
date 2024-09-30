@@ -5,9 +5,9 @@ RUN yum install -y httpd \
     unzip
 ADD https://www.free-css.com/assets/files/free-css-templates/download/page291/elearning.zip /var/www/html
 WORKDIR /var/www/html
-RUN unzip photogenic.zip
-RUN cp -rvf photogenic/* .
-RUN rm -rf photogenic photogenic.zip
+RUN unzip elearning.zip
+RUN cp -rvf elearning*/* .
+RUN rm -rf elearning* photogenic.zip
 COPY index.html /var/www/html
 EXPOSE 80
 CMD ["/usr/sbin/httpd","-D","FOREGROUND"]
