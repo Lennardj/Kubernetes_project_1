@@ -7,8 +7,8 @@ ADD https://www.free-css.com/assets/files/free-css-templates/download/page291/el
 WORKDIR /var/www/html
 RUN unzip elearning.zip
 RUN cp -rvf elearning*/* .
-RUN rm -rf elearning* photogenic.zip
-COPY index.html /var/www/html
+RUN rm -rf elearning* elearning.zip
+COPY elearning*/index.html /var/www/html
 EXPOSE 80
 CMD ["/usr/sbin/httpd","-D","FOREGROUND"]
 EXPOSE 80 22
