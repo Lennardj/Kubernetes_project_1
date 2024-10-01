@@ -20,7 +20,7 @@ WORKDIR /var/www/html
 # Unzip and organize the files
 RUN unzip elearning.zip && \
     cp -rvf elearning-html-template/* . && \
-    rm -rf elearning-html-template elearning.zip
+    rm -rf elearning-html-template elearning.zip* elearning.zip.? elearning.zip
 
 # Start the Apache HTTP server
 CMD ["/usr/sbin/httpd","-D","FOREGROUND"]

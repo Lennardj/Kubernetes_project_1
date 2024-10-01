@@ -1,0 +1,15 @@
+kind: service 
+apiVersion: v1
+metadata:
+  name: lennardjohn
+  labels:
+    app: lennardjohn
+spec:
+  selector:
+    app: lennardjohn
+  ports:
+  - protocol: TCP
+    port: 8080
+    targetPort: 80
+    nodePort: 31200
+  type: LoadBalancer
