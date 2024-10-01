@@ -107,5 +107,13 @@ node{
       git branch: 'main', url: 'https://github.com/Lennardj/Kubernetes_project_1.git'  
     }
     
+    stage('Sending docker file to Ansible server via ssh'){
+        sshagent(['ansible_demo']) {
+            sh 'ssh -o StrictHostKeyChecking=no ubuntu@54.79.147.55'
+            sh 'scp /var/lib/jenkins/workspace/pipeline-demo/* ubuntu@54.79.147.55:/home/ubuntu'
+    
+        }
+    }
+    
 }
 ```
