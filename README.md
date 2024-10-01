@@ -99,3 +99,13 @@ minikube start echo "Minikube and kubectl have been installed successfully." ech
 ```
 minikube start --force
 ```
+
+-Groovy script
+```groovy
+node{
+    stage("Git checkout"){
+      git branch: 'main', url: 'https://github.com/Lennardj/Kubernetes_project_1.git'  
+    }
+    
+}
+```
