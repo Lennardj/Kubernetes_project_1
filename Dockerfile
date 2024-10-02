@@ -4,7 +4,7 @@ FROM almalinux:8
 # Set metadata
 LABEL maintainer="testemail@example.com"
 
-ADD https://www.free-css.com/assets/files/free-css-templates/download/page291/elearning.zip /var/www/html
+# ADD https://www.free-css.com/assets/files/free-css-templates/download/page291/elearning.zip /var/www/html
 # Install necessary packages and add a repository for compatibility if needed
 RUN yum clean all && \
     yum -y install yum-utils && \
