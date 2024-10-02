@@ -14,11 +14,11 @@ spec:
     spec:
       containers:
       - name: lennardjohn
-        image: lennardjohn/docker-webapp
+        image: lennardjohn/pipeline-demo
         imagePullPolicy: Always
         ports:
         - containerPort: 80
-        # resources:
-        # limits:
-        # cpu: 100m
-        # memory: 512Mi
+        resources:
+        limits:
+        cpu: 100m
+        memory: 512Mi

@@ -5,3 +5,4 @@ task:
     command: kubectl apply -f /home/ubuntu/Deployment.yaml
   - name: create new service
     command: kubectl apply -f /home/ubuntu/Service.yaml
+
