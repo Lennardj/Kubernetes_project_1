@@ -13,7 +13,7 @@ EXPOSE 80
 CMD ["/usr/sbin/httpd","-D","FOREGROUND"]
 EXPOSE 80 22 -->
 
-![[Pasted image 20240930151356.png]]
+
 
 This will be a deployment over a kubernetes cluster using jenkins.
 - Developer will write a docer file then push the github
