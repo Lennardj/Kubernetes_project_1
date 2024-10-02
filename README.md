@@ -13,7 +13,6 @@ EXPOSE 80
 CMD ["/usr/sbin/httpd","-D","FOREGROUND"]
 EXPOSE 80 22 -->
 
-
 ![[Pasted image 20240930151356.png]]
 
 This will be a deployment over a kubernetes cluster using jenkins.
@@ -26,15 +25,24 @@ This will be a deployment over a kubernetes cluster using jenkins.
 ## Prerequisite
 git, linux, docker, DockerHub account, Ansible, Kubernetes (deployment and service)
 
-3 ec3 instances
+## 3 ec3 instances
 
 1. Jenkins (default-jre+ jenkins)
 - normal t2 micro
-3. Ansible (Python+ansible+docker)
+2. Ansible (Python+ansible+docker)
 - normal t2 micro
-5. Webapp (kubernetes cluster)--> (docker+minikube)
+3. Webapp (kubernetes cluster)--> (docker+minikube)
 - t2 medium
-## Install jenkins on ubuntu 24.04
+
+We will be starting and stopping the Jenkins server a lot, which will cause the public IP to change every time to avoid this then assign an elastic IP see steps below.
+#### **Steps to Assign an Elastic IP:**
+
+1. In the AWS Management Console, navigate to the **EC2 Dashboard**.
+2. Select **Elastic IPs** from the left-hand menu.
+3. Click **Allocate Elastic IP address** and follow the prompts.
+4. Once the Elastic IP is allocated, go to **Actions** → **Associate Elastic IP address**.
+5. Select your EC2 instance and associate the Elastic IP with it.
+## Install Jenkins on ubuntu 24.04
 https://www.linuxtechi.com/how-to-install-jenkins-on-ubuntu/
 
 ### Jenkins plugins
@@ -76,6 +84,7 @@ sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin 
 
 ```
 
+## install minikube
 - Minikube install scripts
 ```bash
 # Update package list 
@@ -100,6 +109,8 @@ minikube start echo "Minikube and kubectl have been installed successfully." ech
 minikube start --force
 ```
 
+## Jenkins set up
+
 -Groovy script
 ```groovy
 node{
@@ -117,3 +128,4 @@ node{
     
 }
 ```
+
