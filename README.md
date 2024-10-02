@@ -112,6 +112,8 @@ minikube start --force
 ## Jenkins set up
 
 -Groovy script
+
+Rememebr to change the ip addresses to match yours
 ```groovy
 node{
     stage("Git checkout"){
