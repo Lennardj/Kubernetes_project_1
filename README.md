@@ -120,9 +120,23 @@ node{
     
     stage('Sending docker file to Ansible server via ssh'){
         sshagent(['ansible_demo']) {
-            sh 'ssh -o StrictHostKeyChecking=no ubuntu@54.79.147.55'
-            sh 'scp /var/lib/jenkins/workspace/pipeline-demo/* ubuntu@54.79.147.55:/home/ubuntu'
-    
+            sh 'ssh -o StrictHostKeyChecking=no ubuntu@172.31.32.237'
+            sh 'scp /var/lib/jenkins/workspace/pipeline-demo/* ubuntu@172.31.32.237:/home/ubuntu'
+        }
+    }
+    stage('Docker Build Image'){
+        sshagent(['ansible_demo']) {
+            sh 'ssh -o StrictHostKeyChecking=no ubuntu@172.31.32.237'
+            sh """ssh -o StrictHostKeyChecking=no ubuntu@172.31.32.237 docker image build -t ${JOB_NAME}:v1.${BUILD_ID} ."""
+        }
+    }
+      stage('Docker Image Tagging'){
+        sshagent(['ansible_demo']) {
+            sh 'ssh -o StrictHostKeyChecking=no ubuntu@172.31.32.237'
+            sh """ssh -o StrictHostKeyChecking=no ubuntu@172.31.32.237 docker image tag ${JOB_NAME}:v1.${BUILD_ID} lennardjohn/${JOB_NAME}:v1.${BUILD_ID}  """
+            sh """ssh -o StrictHostKeyChecking=no ubuntu@172.31.32.237 docker image tag ${JOB_NAME}:v1.${BUILD_ID} lennardjohn/${JOB_NAME}:latest  """
+        
+            
         }
     }
     
