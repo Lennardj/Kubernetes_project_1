@@ -2,7 +2,7 @@
 FROM almalinux:8
 
 # Set metadata
-LABEL maintainer="your_email@example.com"
+LABEL maintainer="testemail@example.com"
 
 # Install necessary packages and add a repository for compatibility if needed
 RUN yum clean all && \
